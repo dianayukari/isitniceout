@@ -1,0 +1,11 @@
+/* Loads all of Tailwind: its reset ("preflight"), its theme and every utility class. */
+@import 'tailwindcss';
+
+/*
+  @theme is where Tailwind v4 is customised (v3 used tailwind.config.js for this).
+  Every variable here becomes both a CSS variable AND a set of utility classes:
+  --font-display  ->  the class `font-display`
+*/
+@theme {
+  --font-display: 'Fraunces', ui-serif, Georgia, serif;
+}
