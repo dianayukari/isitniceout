@@ -19,7 +19,7 @@ const items = computed(() => [
   <dl class="grid w-full max-w-2xl grid-cols-2 gap-x-4 gap-y-6 md:grid-cols-4">
     <!-- flex-col-reverse: <dt> must come first in the HTML, but we want the value on top -->
     <div v-for="item in items" :key="item.label" class="flex flex-col-reverse gap-1">
-      <dt class="text-xs tracking-wider text-slate-600 uppercase" :lang="item.lang">{{ item.label }}</dt>
+      <dt class="text-xs tracking-wider text-ink-muted uppercase" :lang="item.lang">{{ item.label }}</dt>
       <dd class="font-display text-2xl">{{ item.value }}</dd>
     </div>
   </dl>

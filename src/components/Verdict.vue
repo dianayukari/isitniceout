@@ -12,6 +12,6 @@ const reason = computed(() => verdictReason(props.weather.today))
     <p lang="nl" class="font-display text-8xl leading-none font-semibold tracking-tight md:text-9xl">
       {{ weather.isNice ? 'Ja!' : 'Nee.' }}
     </p>
-    <p class="mt-4 text-lg text-slate-700 md:text-xl">{{ reason }}</p>
+    <p class="mt-4 text-lg text-ink-muted md:text-xl">{{ reason }}</p>
   </div>
 </template>

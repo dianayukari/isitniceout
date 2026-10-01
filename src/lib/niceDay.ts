@@ -29,3 +29,15 @@ export function verdictReason(day: DayTotals): string {
   if (!sunny) return 'Not enough sun today.'
   return 'Sunny, but too much rain.'
 }
+
+// The page background follows the answer, one look per combination of the two rules:
+//                 dry         too much rain
+// enough sun      'nice'      'showers'
+// not enough sun  'grey'      'wet'
+export type Backdrop = 'nice' | 'showers' | 'grey' | 'wet'
+
+export function backdropFor(day: DayTotals): Backdrop {
+  const { sunny, dry } = checks(day)
+  if (sunny) return dry ? 'nice' : 'showers'
+  return dry ? 'grey' : 'wet'
+}

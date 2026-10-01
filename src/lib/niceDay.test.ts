@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { isNiceDay, verdictReason } from './niceDay'
+import { backdropFor, isNiceDay, verdictReason } from './niceDay'
 
 const HOUR = 3600
 
@@ -29,5 +29,16 @@ describe('verdictReason', () => {
     expect(verdictReason(day(2, 5))).toBe('Not enough sun, and too much rain.')
     expect(verdictReason(day(2, 0))).toBe('Not enough sun today.')
     expect(verdictReason(day(8, 5))).toBe('Sunny, but too much rain.')
+  })
+})
+
+describe('backdropFor', () => {
+  const day = (sunHours: number, mm: number) => ({ sunshineSeconds: sunHours * HOUR, daylightSeconds: 12 * HOUR, precipitationMm: mm })
+
+  it('has one backdrop per combination of sun and rain', () => {
+    expect(backdropFor(day(8, 0))).toBe('nice')
+    expect(backdropFor(day(8, 5))).toBe('showers')
+    expect(backdropFor(day(2, 0))).toBe('grey')
+    expect(backdropFor(day(2, 5))).toBe('wet')
   })
 })

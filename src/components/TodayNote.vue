@@ -7,7 +7,7 @@ defineProps<{ weather: TodayWeather }>()
 
 <template>
   <!-- Only while part of today is still a forecast -->
-  <p v-if="!weather.isComplete" class="text-sm text-slate-600">
+  <p v-if="!weather.isComplete" class="text-sm text-ink-muted">
     <span class="block sm:inline">
       So far: {{ formatDuration(weather.soFar.sunshineSeconds) }} <span lang="nl">zon</span>,
       {{ formatMm(weather.soFar.precipitationMm) }} <span lang="nl">regen</span>

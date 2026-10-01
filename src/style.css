@@ -4,8 +4,62 @@
 /*
   @theme is where Tailwind v4 is customised (v3 used tailwind.config.js for this).
   Every variable here becomes both a CSS variable AND a set of utility classes:
-  --font-display  ->  the class `font-display`
+  --font-display    ->  font-display
+  --color-ink       ->  text-ink, bg-ink, border-ink, border-ink/20, ...
 */
 @theme {
   --font-display: 'Fraunces', ui-serif, Georgia, serif;
+
+  /* Text colours for light backgrounds (the default) */
+  --color-ink: var(--color-slate-900);
+  --color-ink-muted: var(--color-slate-700);
+
+  /*
+    Animations for the drawings. --animate-x gives the class animate-x.
+    Distances are in SVG units (the drawing is 600 units wide), so they
+    scale with the drawing on every screen size.
+  */
+  --animate-spin-slow: spin-slow 40s linear infinite;
+  --animate-drift: drift 3s ease-in-out infinite alternate;
+  --animate-fall: fall 1.5s linear infinite;
+
+  @keyframes spin-slow {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes drift {
+    from {
+      transform: translateX(-14px);
+      opacity: 0.6;
+    }
+    to {
+      transform: translateX(14px);
+      opacity: 1;
+    }
+  }
+  /* The drops are drawn slanted like "/", so they fall down and slightly left */
+  @keyframes fall {
+    0% {
+      transform: translate(6px, -18px);
+      opacity: 0;
+    }
+    20%,
+    70% {
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-6px, 18px);
+      opacity: 0;
+    }
+  }
+}
+
+/*
+  On dark backgrounds we only swap the variables. Every element using
+  text-ink / text-ink-muted inside .on-dark follows automatically.
+*/
+.on-dark {
+  --color-ink: var(--color-white);
+  --color-ink-muted: var(--color-slate-200);
 }
