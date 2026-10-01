@@ -14,12 +14,9 @@ const name = computed(() => cities.find((c) => c.id === cityId.value)?.name)
     picker: a wheel on iPhone, a list on desktop, keyboard support for free.
   -->
   <span
-    class="relative inline-flex items-baseline gap-[0.15em] rounded-lg focus-within:outline-2 focus-within:outline-offset-4 focus-within:outline-current"
+    class="relative border-b border-current py-[3px] focus-within:outline-2 focus-within:outline-offset-4 focus-within:outline-current"
   >
-    <span class="italic underline decoration-current/30 decoration-2 underline-offset-[0.15em]">{{ name }}</span>
-    <svg class="size-[0.4em] shrink-0 self-center opacity-60" viewBox="0 0 12 8" aria-hidden="true">
-      <path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-    </svg>
+    {{ name }}
     <select v-model="cityId" aria-label="Choose a city" class="absolute inset-0 cursor-pointer text-base opacity-0">
       <option v-for="c in cities" :key="c.id" :value="c.id">{{ c.name }}</option>
     </select>

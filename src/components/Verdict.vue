@@ -8,10 +8,11 @@ const reason = computed(() => verdictReason(props.weather.today))
 </script>
 
 <template>
-  <div>
-    <p lang="nl" class="font-display text-8xl leading-none font-semibold tracking-tight md:text-9xl">
-      {{ weather.isNice ? 'Ja!' : 'Nee.' }}
+  <div class="flex flex-col">
+    <p lang="nl" class="text-[40px] leading-[normal] whitespace-nowrap md:text-[56px]">
+      {{ weather.isNice ? 'Ja!' : 'Nee' }}
     </p>
-    <p class="mt-4 text-lg text-ink-muted md:text-xl">{{ reason }}</p>
+    <!-- Narrow on purpose (from the design), so the reason wraps into a short column -->
+    <p class="w-[66px] text-[13px] leading-[1.05] md:w-[88px] md:text-[16px]">{{ reason }}</p>
   </div>
 </template>

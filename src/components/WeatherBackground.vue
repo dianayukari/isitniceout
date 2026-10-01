@@ -3,13 +3,15 @@ import type { Backdrop } from '../lib/niceDay'
 
 defineProps<{ backdrop: Backdrop }>()
 
+// From the Figma design: two semi-transparent colours over white.
+// `from-[#ff8c00]/28` = that hex colour at 28% opacity.
 // Full class names written out: Tailwind finds classes by scanning the source,
-// so a class built at runtime (like `from-${color}-200`) would never be generated.
+// so a class built at runtime (like `from-${color}`) would never be generated.
 const gradients: Record<Backdrop, string> = {
-  nice: 'from-amber-200 via-yellow-100 to-sky-200',
-  showers: 'from-slate-400 via-sky-300 to-amber-100',
-  grey: 'from-slate-300 via-slate-200 to-slate-100',
-  wet: 'from-slate-500 via-slate-600 to-slate-700',
+  nice: 'from-[#ff8c00]/28 to-[#0059ff]/28',
+  showers: 'from-[#fd6012]/30 to-[#2721e4]/30',
+  grey: 'from-[#a990f1]/34 to-[#4200ff]/34',
+  wet: 'from-[#9c06d7]/40 to-[#4200ff]/40',
 }
 </script>
 
@@ -18,8 +20,9 @@ const gradients: Record<Backdrop, string> = {
     A gradient can't be animated into another gradient, so every backdrop gets
     its own full-screen layer, stacked on top of each other. Only the active one
     has opacity-100; a new answer fades one layer out and the next one in.
+    bg-white underneath: the design's colours are see-through, over white.
   -->
-  <div class="fixed inset-0 -z-10" aria-hidden="true">
+  <div class="fixed inset-0 -z-10 bg-white" aria-hidden="true">
     <div
       v-for="(classes, key) in gradients"
       :key="key"

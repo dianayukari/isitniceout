@@ -9,7 +9,8 @@ const svg = computed(() => (props.backdrop ? drawingFor(props.backdrop) : null))
 </script>
 
 <template>
-  <div class="relative aspect-square w-60 sm:w-72 md:w-80">
+  <!-- 302px square in the design; a bit bigger from the md breakpoint up -->
+  <div class="relative size-[302px] shrink-0 md:size-[400px]">
     <!--
       <Transition> adds these classes while a drawing enters or leaves.
       The leaving one is taken out of the flow (absolute inset-0) so both
